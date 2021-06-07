@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>前端小铺</title>
+  
+  <subtitle>阿宽</subtitle>
+  <link href="https://www.kassing.cn/atom.xml" rel="self"/>
+  
+  <link href="https://www.kassing.cn/"/>
+  <updated>2021-06-07T10:20:37.606Z</updated>
+  <id>https://www.kassing.cn/</id>
+  
+  <author>
+    <name>阿宽</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>博客好工具-PicGo、Github、jsdelivr打造完美图床</title>
+    <link href="https://www.kassing.cn/2021/06/07/2021-6-7-Github%E5%9B%BE%E5%BA%8A%E5%8A%A0%E9%80%9F/"/>
+    <id>https://www.kassing.cn/2021/06/07/2021-6-7-Github%E5%9B%BE%E5%BA%8A%E5%8A%A0%E9%80%9F/</id>
+    <published>2021-06-07T00:36:44.000Z</published>
+    <updated>2021-06-07T10:20:37.606Z</updated>
+    
+    <content type="html"><![CDATA[<p>在使用本地博客的过程中，图片上传终究是一个让人🥚疼的问题，一般情况下，我们有以下方案解决该问题</p><ul><li>本地存储图片 + 本地引入</li><li>存储服务器 + url引入</li></ul><p>那么利用一个方便的图床在写博客时就显得尤为重要。下面就来介绍下，如何打造一款最方便图床。</p><p><em>注：本案例采用了VSCode + PicGo插件 + Github + jsdelivr相关内容</em></p><h1 id="1.-github图床仓库的创建及配置">1. Github图床仓库的创建及配置<a title="#1.-github图床仓库的创建及配置" href="#1.-github图床仓库的创建及配置"></a></h1><h2 id="1.1.-创建github仓库">1.1. 创建github仓库<a title="#1.1.-创建github仓库" href="#1.1.-创建github仓库"></a></h2><p>进入<a href="https://github.com" target="_blank">Github</a>进行登录并新建仓库</p><p><img src="https://cdn.jsdelivr.net/gh/zkassing/picbed@latest/20210607175836.png" alt="20210607175836" loading="lazy" class="φbq"></p><p>填写仓库名称点击<code>Create repository</code>，等待创建完成即可</p><h1 id="2.-vscode插件的安装及配置">2. VSCode插件的安装及配置<a title="#2.-vscode插件的安装及配置" href="#2.-vscode插件的安装及配置"></a></h1><h2 id="2.1.-安装插件">2.1. 安装插件<a title="#2.1.-安装插件" href="#2.1.-安装插件"></a></h2><p>在VSCode中查找插件<code>PicGo</code><br><img src="https://cdn.jsdelivr.net/gh/zkassing/picbed@latest/20210607180126.png" alt="20210607180126" loading="lazy"></p><p>安装对应的插件，并打开配置<br><img src="https://cdn.jsdelivr.net/gh/zkassing/picbed@latest/20210607180206.png" alt="20210607180206" loading="lazy"></p><h2 id="2.2.-配置插件">2.2. 配置插件<a title="#2.2.-配置插件" href="#2.2.-配置插件"></a></h2><p>打开配置后，找到配置项<code>Picgo &gt; Pic Bed: Curren</code>，并选择<code>github</code><br><img src="https://cdn.jsdelivr.net/gh/zkassing/picbed@latest/20210607180238.png" alt="20210607180238" loading="lazy"></p><p>找到配置项<code>Picgo &gt; Pic Bed &gt; Github: Branch</code>并填写<code>main</code><br><img src="https://cdn.jsdelivr.net/gh/zkassing/picbed@latest/20210607180504.png" alt="20210607180504" loading="lazy"></p><p>找到<code>Picgo &gt; Pic Bed &gt; Github: Repo</code>填写你的Github用户名/刚才创建的仓库命，如<code>zhangsan/repo</code><br><img src="https://cdn.jsdelivr.net/gh/zkassing/picbed@latest/20210607180733.png" alt="20210607180733" loading="lazy"></p><p>保存设置</p><h1 id="3.-jsdelivr的路径分析及设置">3. jsdelivr的路径分析及设置<a title="#3.-jsdelivr的路径分析及设置" href="#3.-jsdelivr的路径分析及设置"></a></h1><h2 id="3.1.-上传图片查看路径">3.1. 上传图片查看路径<a title="#3.1.-上传图片查看路径" href="#3.1.-上传图片查看路径"></a></h2><p>使用PicGo插件的快捷键<code>Ctrl</code> + <code>Alt</code> + <code>U</code>可以快速将剪切板图片上传，图片上传后查看上传后的图片路径</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://raw.githubusercontent.com/github用户明/仓库名称/main/20210607181136.png</span><br></pre></td></tr></table></figure><h2 id="3.2.-替换成jsdelivr的域名">3.2. 替换成jsdelivr的域名<a title="#3.2.-替换成jsdelivr的域名" href="#3.2.-替换成jsdelivr的域名"></a></h2><p>找到对应的用户名及仓库名进行jsdelivr的替换。jsdelivr给我们提供的地址为</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://cdn.jsdelivr.net/gh/user/repo@version/file</span><br></pre></td></tr></table></figure><ol><li>user替换成githu用户名</li><li>repo替换成仓库名称</li><li>version替换成latest</li></ol><p>之后得到新的url</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://cdn.jsdelivr.net/gh/github用户名/仓库名@latest</span><br></pre></td></tr></table></figure><p>将这个地址设置到PicGo的<code>Picgo › Pic Bed › Github: Custom Url</code>中<br><img src="https://cdn.jsdelivr.net/gh/zkassing/picbed@latest/20210607181615.png" alt="20210607181615" loading="lazy"></p><h1 id="4.-使用方法">4. 使用方法<a title="#4.-使用方法" href="#4.-使用方法"></a></h1><h2 id="4.1.-截图">4.1. 截图<a title="#4.1.-截图" href="#4.1.-截图"></a></h2><p>先利用工具截图，并保存到剪切板</p><h2 id="4.2.-上传">4.2. 上传<a title="#4.2.-上传" href="#4.2.-上传"></a></h2><p>在VSCode中打开markdown文件，通过快捷键<code>Ctrl</code> + <code>Alt</code> + <code>U</code>进行图片的上传</p><p><em>注：刚打开VSCode第一次使用插件时会有激活插件的过程，需要等一会，上传成功后，插件会自动插入图片的md写法</em></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;在使用本地博客的过程中，图片上传终究是一个让人🥚疼的问题，一般情况下，我们有以下方案解决该问题&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;本地存储图片 + 本地引入&lt;/li&gt;
+&lt;li&gt;存储服务器 + url引入&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;那么利用一个方便的图床在写博客时就显得尤为重要。</summary>
+      
+    
+    
+    
+    <category term="博客技巧" scheme="https://www.kassing.cn/categories/%E5%8D%9A%E5%AE%A2%E6%8A%80%E5%B7%A7/"/>
+    
+    
+    <category term="图床" scheme="https://www.kassing.cn/tags/%E5%9B%BE%E5%BA%8A/"/>
+    
+    <category term="PicGo" scheme="https://www.kassing.cn/tags/PicGo/"/>
+    
+  </entry>
+  
+</feed>
