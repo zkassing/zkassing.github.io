@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./reset.css">
+  <style>
+    /* div {
+      width: 100px;
+      height: 100px;
+      background: darkgoldenrod;
+      transition: all 10s ease-in;
+
+    }
+
+    div:hover {
+      transform: rotate(3600deg);
+    } */
+
+    .fan {
+      width: 280px;
+      height: 280px;
+      border: 10px solid #333;
+      /* 设置圆角，让正方形变成圆形 */
+      border-radius: 50%;
+
+      /* 设置为弹性盒子，然后让内部元素居中 */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .leafs {
+      width: 60px;
+      height: 60px;
+      background: #333;
+      border-radius: 50%;
+      position: relative;
+      animation: open 0.5s infinite linear paused;
+    }
+
+    .leaf {
+      width: 60px;
+      height: 124px;
+      border-radius: 50%;
+      background: #6A6AEB;
+      position: absolute;
+      z-index: -1;
+      
+      /* 定位元素居中 */
+      left: 50%;
+      top: 50%;
+      margin-left: -30px;
+      margin-top: -62px;
+    }
+
+    .leaf1 {
+      transform: translateY(-62px);
+      /* bottom: 30px; */
+    }
+
+    .leaf2 {
+      transform: rotate(120deg) translateY(-62px);
+      /* bottom: -62px; */
+      /* left: 54px; */
+    }
+
+    .leaf3 {
+      transform: rotate(-120deg) translateY(-62px);
+      /* left: -53px; */
+      /* top: 3px; */
+    }
+
+
+    /* 创建一个动画 */
+    @keyframes open {
+      0% {
+        transform: rotate(0);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="fan">
+    <div class="leafs">
+      <div class="leaf leaf1"></div>
+      <div class="leaf leaf2"></div>
+      <div class="leaf leaf3"></div>
+    </div>
+  </div>
+  <div class="box">
+    <button id="one">1</button>
+    <button id="two">2</button>
+    <button id="three">3</button>
+    <button id="off">关</button>
+  </div>
+  
+
+  <script>
+    const box = document.querySelector('.box')
+    const leafs = document.querySelector('.leafs')
+    box.addEventListener('click', function (e) {
+      const target = e.target
+
+      if (e.target.id === 'one') {
+        leafs.style.animationPlayState = "running"
+        leafs.style.animationDuration = '2s'
+      }
+
+      if (e.target.id === 'two') {
+        leafs.style.animationPlayState = "running"
+        leafs.style.animationDuration = '1s'
+      }
+
+      if (e.target.id === 'three') {
+        leafs.style.animationPlayState = "running"
+        leafs.style.animationDuration = '0.3s'
+      }
+      if (e.target.id === 'off') {
+        leafs.style.animationPlayState = "paused"
+      }
+    })
+
+
+  </script>
+</body>
+</html>
